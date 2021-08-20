@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="school_type">
+        <item>초등학교</item>
+        <item>중학교</item>
+        <item>고등학교</item>
+        <item>대학교</item>
+        <item>특수/기타학교</item>
+        <item>대안학교</item>
+    </string-array>
+
+    <string-array name="school_code">
+        <item>elem_list</item>
+        <item>midd_list</item>
+        <item>high_list</item>
+        <item>univ_list</item>
+        <item>seet_list</item>
+        <item>alte_list</item>
+
+    </string-array>
+</resources>

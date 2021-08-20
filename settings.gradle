@@ -1,0 +1,2 @@
+rootProject.name = "safechildren"
+include ':app'

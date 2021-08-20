@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="20px"
+                android:textColor="@color/black"
+                android:layout_marginTop="15px"
+                android:layout_marginBottom="5px"
+                android:text="나의 정보"></TextView>
+            <EditText
+                android:id="@+id/name_text_input"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textSize="15sp"
+                android:textColor="@android:color/black"
+                android:background="#f9f9f9f9"
+                android:backgroundTint="#f9f9f9f9"
+                android:layout_marginRight="50px"
+                android:layout_marginLeft="50px"
+                android:layout_marginTop="10px"
+                android:gravity="top"
+                android:textColorHint="#99999999"
+                android:hint="@string/name_text_input_hint"
+                android:padding="20px"
+                android:lines="1"/>
+            <EditText
+                android:id="@+id/intro_text_input"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textSize="15sp"
+                android:textColor="@android:color/black"
+                android:inputType="textMultiLine"
+                android:background="#f9f9f9f9"
+                android:backgroundTint="#f9f9f9f9"
+                android:layout_marginTop="10px"
+                android:layout_marginBottom="0px"
+                android:layout_marginRight="50px"
+                android:layout_marginLeft="50px"
+                android:gravity="top"
+                android:textColorHint="#99999999"
+                android:hint="@string/intro_text_input_hint"
+                android:padding="20px"
+                android:lines="2"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/radio_gender"
+                android:layout_marginLeft="20px">
+                <RadioButton android:id="@+id/radio_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male" />
+                <RadioButton android:id="@+id/radio_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"/>
+                    <!-- android:onClick="onRadioButtonClicked"-->
+
+            </RadioGroup>
+            <Button
+                android:id="@+id/datebtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50px"
+                android:layout_marginRight="50px"
+                android:text="생년월일"></Button>
+
+            <Button
+            android:id="@+id/schoolbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:text="학교 / 학원"/>
+
+            <CheckBox
+                android:id="@+id/parent_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_gravity="left"
+                android:textColor="@color/black"
+                android:layout_marginLeft="40px"
+                android:text="학부모" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@color/white"
+                android:layout_marginTop="15px"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/usersavebtn"
+                    android:layout_width="400px"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/save_user"></Button>
+                <Button
+                    android:id="@+id/userlogoutbtn"
+                    android:layout_width="400px"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/logout"></Button>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:background="@color/cardview_shadow_end_color"
+                android:gravity="center"
+                android:id="@+id/childlayout"
+                android:visibility="invisible"
+                android:layout_marginBottom="20px"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:padding="20px"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="15px"
+                    android:text="자녀 목록">
+                </TextView>
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="350px"
+                    android:layout_marginBottom="15px"
+                    android:background="@color/browser_actions_bg_grey"
+                    android:id="@+id/childlist"/>
+                <TextView
+                    android:id="@+id/emptylisttext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empty_list" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/black"
+                    android:inputType="textMultiLine"
+                    android:background="#f9f9f9f9"
+                    android:backgroundTint="#f9f9f9f9"
+                    android:layout_marginBottom="0px"
+                    android:layout_marginRight="50px"
+                    android:layout_marginLeft="50px"
+                    android:gravity="top"
+                    android:textColorHint="#99999999"
+                    android:hint="@string/childtoadd_text_input_hint"
+                    android:padding="20px"
+                    android:id="@+id/childtoadd" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addchildbtn"
+                    android:layout_marginTop="20px"
+                    android:layout_marginBottom="20px"
+                    android:layout_marginRight="50px"
+                    android:layout_marginLeft="50px"
+                    android:text="추가하기"></Button>
+            </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+</RelativeLayout>

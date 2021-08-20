@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingHorizontal="15dp"
+   >
+    <RadioGroup
+        android:id="@+id/radio_school_academy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+        <RadioButton android:id="@+id/radio_school"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/school"
+            android:layout_marginRight="15dp"/>
+        <RadioButton android:id="@+id/radio_academy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/academy"/>
+    </RadioGroup>
+
+    <RelativeLayout
+        android:id = "@+id/school"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id = "@+id/school_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학교 분류"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_margin = "15dp"/>
+        <Spinner
+            android:id = "@+id/spinner_school"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/school_text"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id = "@+id/search_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/school_text"
+            android:text="학교명"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_margin = "15dp"/>
+
+        <EditText
+            android:id = "@+id/edit_school"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinner_school"
+            android:layout_alignLeft="@+id/spinner_school"
+            android:layout_marginRight="30dp"
+            android:hint="@string/school_search"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+    <!-- 수정하기 -->
+    <RelativeLayout
+        android:id = "@+id/academy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id = "@+id/academy_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학교 분류"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_margin = "15dp"/>
+        <Spinner
+            android:id = "@+id/spinner_academy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/academy_text"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:id = "@+id/search_academy_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/academy_text"
+            android:text="학교명"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_margin = "15dp"/>
+
+        <EditText
+            android:id = "@+id/edit_academy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinner_academy"
+            android:layout_alignLeft="@+id/spinner_academy"
+            android:layout_marginRight="30dp"
+            android:hint="@string/school_search"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id = "@+id/search_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "@string/school_search_btn"
+        android:layout_gravity="end"
+        android:layout_marginRight="30dp"/>
+
+
+    <ListView
+        android:id="@+id/school_list"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginBottom="30dp"/>
+
+</LinearLayout>

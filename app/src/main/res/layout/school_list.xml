@@ -1,0 +1,27 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/school_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="학교명"
+        android:padding="10px"
+        android:layout_marginLeft="30px"
+        android:layout_marginBottom="5px"/>
+    <TextView
+        android:id="@+id/school_addr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="주소"
+        android:padding="10px"
+        android:layout_marginLeft="30px"
+         />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/black"/>
+</LinearLayout>
