@@ -41,6 +41,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kjh.safechildren.Global;
 import com.kjh.safechildren.R;
 import com.kjh.safechildren.SafeChildrenCallback;
+import com.kjh.safechildren.data.Academy_API;
 import com.kjh.safechildren.data.SchoolListAdapter;
 import com.kjh.safechildren.data.School_API;
 import com.kjh.safechildren.data.User_Firebase;
@@ -60,13 +61,13 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
     TextView emptylisttext;
     EditText childtoadd;
     Dialog dialog;
-    RelativeLayout school;
+    RelativeLayout school,academy;
     User_Firebase user_firebase;
     UsersListAdapter childrenListAdapter;
 
-    Context c;
     String dateString = "";
     String school_type = "elem_list";
+    String academy_code = "B10";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -108,10 +109,11 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
             public void onClick(View v) {
                 String emailOfChildToAdd = childtoadd.getText().toString();
                 //get list of users who are not parents from firebase DB
-                User_Firebase.getAllChildren(c, true);
+                User_Firebase.getAllChildren(getContext(), true);
             }
         });
-        User_Firebase.getAllChildren(c, true);
+        User_Firebase.getAllChildren(getContext(), true);
+
         userlogoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,6 +130,11 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
                 User_Firebase.writeUserData();
             }
         });
+
+        //부모 계정일 때 child firebase 데이터 변경 시 알림
+        if (Global.user.getType().compareTo("parent") == 0){
+            User_Firebase.setChildEventListener(getContext());
+        }
 
 
 
@@ -183,6 +190,7 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
         dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.school_dialog);
         school = (RelativeLayout)dialog.findViewById(R.id.school);
+        academy = (RelativeLayout)dialog.findViewById(R.id.academy);
         RadioButton radio_school = (RadioButton) dialog.findViewById(R.id.radio_school);
         RadioButton radio_academy = (RadioButton) dialog.findViewById(R.id.radio_academy);
         radio_school.setOnClickListener(this);
@@ -203,20 +211,47 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
             public void onNothingSelected(AdapterView<?> parent) { }
         });
 
+        Spinner spinner_academy = (Spinner)dialog.findViewById(R.id.spinner_academy);
+        ArrayAdapter spinner_adapter_ac = ArrayAdapter.createFromResource(getContext(), R.array.academy_area, android.R.layout.simple_spinner_dropdown_item);
+        spinner_adapter_ac.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_academy.setAdapter(spinner_adapter_ac);
+        spinner_academy.setSelection(0);
+        spinner_academy.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                academy_code = getResources().getStringArray(R.array.academy_code)[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
+
         ListView school_list = (ListView)dialog.findViewById(R.id.school_list);
         SchoolListAdapter list_adapter = new SchoolListAdapter(getContext());
         school_list.setAdapter(list_adapter);
         EditText school_search = (EditText)dialog.findViewById(R.id.edit_school);
+        EditText academy_search = (EditText)dialog.findViewById(R.id.edit_academy);
         Button searchbtn = (Button)dialog.findViewById(R.id.search_btn);
         searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 list_adapter.clear();
-                new School_API(getString(R.string.careernet_key),school_type,school_search.getText().toString(),list_adapter).execute();
+                if (radio_school.isChecked()){
+                    new School_API(getString(R.string.careernet_key),school_type,school_search.getText().toString(),list_adapter,getContext()).execute();
+                }
+                else{
+                    new Academy_API(getString(R.string.neis_key),academy_code,academy_search.getText().toString(),list_adapter,getContext()).execute();
+                }
+
             }
         });
 
-
+        if (Global.user.getSchoolName().length() > 0 )  {
+            schoolbtn.setText(Global.user.getSchoolName());
+        }
+        else {
+            schoolbtn.setText("학교 / 학원");
+        }
         schoolbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -246,12 +281,12 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
                 parentCheckBox.setChecked(true);
         }
 
-        updateLocation();
+       // updateLocation();
     }
 
 
 
-    void updateLocation() {
+   /* void updateLocation() {
         LocationManager locationManager = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
 
         LocationListener locationListener = new MyLocationListener();
@@ -267,14 +302,13 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
         }
         locationManager.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
-    }
+    }*/
 
     @Override
     public void onClick(View view) {
 
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
-        Log.e("CHECK1", String.valueOf(view.getId()));
 
         // Check which radio button was clicked
 
@@ -291,6 +325,7 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
             case R.id.radio_school:
                 if (checked){
                     school.setVisibility(View.VISIBLE);
+                    academy.setVisibility(View.GONE);
                 }
 
                 break;
@@ -298,6 +333,7 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
             case R.id.radio_academy:
                 if (checked){
                     school.setVisibility(View.GONE);
+                    academy.setVisibility(View.VISIBLE);
                 }
 
                 break;
@@ -306,7 +342,7 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
     }
 
     /*---------- Listener class to get coordinates ------------- */
-    private class MyLocationListener implements LocationListener {
+    /*private class MyLocationListener implements LocationListener {
         final String TAG = "safechildren";
         @Override
         public void onLocationChanged(Location loc) {
@@ -319,7 +355,7 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
             String latitude = "Latitude: " + loc.getLatitude();
             Log.v(TAG, latitude);
 
-            /*------- To get city name from coordinates -------- */
+            ------- To get city name from coordinates --------
             String cityName = null;
             Geocoder gcd = new Geocoder(getActivity().getBaseContext(), Locale.getDefault());
             List<Address> addresses;

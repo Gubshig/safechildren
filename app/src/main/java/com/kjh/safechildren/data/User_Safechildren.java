@@ -5,7 +5,7 @@ public class User_Safechildren {
     String email;   //email used to login
     String intro="";
     String name="";
-    String type="student"; //parent or student
+    String type="child"; //parent or child or manager
     String gender="";
     String location="";
     String schoolName="";
@@ -13,7 +13,7 @@ public class User_Safechildren {
     String childrenCSV="";
     String schoolsCSV="";
     String DateOfBirth="";
-    String status="";
+    Boolean status= false;//탑승(true) or 미탑승(false)
     String statusUpdateTime="";
 
     public User_Safechildren(){}
@@ -97,8 +97,8 @@ public class User_Safechildren {
         return this.DateOfBirth;
     };
 
-    public void setStatus(String status){this.status = status;}
-    public String getStatus(){return this.status;}
+    public void setStatus(Boolean status){this.status = status;}
+    public Boolean getStatus(){return this.status;}
 
     public void setLastStatusUpdate(String updateTime){ this.statusUpdateTime=updateTime;}
     public String getLastStatusUpdate(){return statusUpdateTime;}

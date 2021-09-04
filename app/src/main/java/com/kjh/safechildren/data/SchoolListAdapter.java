@@ -63,7 +63,7 @@ public class SchoolListAdapter extends BaseAdapter {
         TextView name = (TextView) view.findViewById(R.id.school_name);
         TextView addr = (TextView) view.findViewById(R.id.school_addr);
         // Populate the data into the template view using the data object
-        name.setText("학교명:  "+school_name.get(position));
+        name.setText("학교/학원명:  "+school_name.get(position));
         addr.setText("주소:  "+school_addr.get(position));
         // Return the completed view to render on screen
         return view;

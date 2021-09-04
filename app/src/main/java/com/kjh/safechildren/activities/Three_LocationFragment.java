@@ -2,6 +2,7 @@ package com.kjh.safechildren.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,11 +29,6 @@ import java.util.ArrayList;
 public class Three_LocationFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap mMap;
     private ArrayList<LatLng> locationArrayList;
-
-    /*LatLng sydney = new LatLng(-34, 151);
-    LatLng TamWorth = new LatLng(-31.083332, 150.916672);
-    LatLng NewCastle = new LatLng(-32.916668, 151.750000);
-    LatLng Brisbane = new LatLng(-27.470125, 153.021072);*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,14 +58,29 @@ public class Three_LocationFragment extends Fragment implements OnMapReadyCallba
         // on below line we are adding our
         // locations in our array list.
         if (Global.arrayOfChildrenUsers != null && Global.login){
-            for(User_Safechildren child : Global.arrayOfChildrenUsers){
-                if(child.getLocation()!=null){
-                    if(child.getLocation().length()>0){
-                        String locString[] = child.getLocation().split(",");
+            if(Global.user.getType().compareTo("parent")==0){
+                for(User_Safechildren child : Global.arrayOfChildrenUsers){
+                    if(child.getLocation()!=null){
+                        if(child.getLocation().length()>0){
+                            String locString[] = child.getLocation().split(",");
+                            if(locString.length==2){
+                                Double lat = Double.parseDouble(locString[0]);
+                                Double lon = Double.parseDouble(locString[1]);
+
+                                LatLng loc = new LatLng(lat, lon);
+                                locationArrayList.add(loc);
+                            }
+                        }
+                    }
+                }
+            }
+            else if (Global.user.getType().compareTo("child")==0){
+                if(Global.user.getLocation()!=null){
+                    if(Global.user.getLocation().length()>0){
+                        String locString[] = Global.user.getLocation().split(",");
                         if(locString.length==2){
                             Double lat = Double.parseDouble(locString[0]);
                             Double lon = Double.parseDouble(locString[1]);
-
                             LatLng loc = new LatLng(lat, lon);
                             locationArrayList.add(loc);
                         }
@@ -77,7 +88,9 @@ public class Three_LocationFragment extends Fragment implements OnMapReadyCallba
                 }
             }
 
+
         }
+
         else {
             Toast.makeText(getContext(),
                    "로그인이 필요한 서비스입니다.",
@@ -91,14 +104,22 @@ public class Three_LocationFragment extends Fragment implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        String marker = "";
         // inside on map ready method
         // we will be displaying all our markers.
         // for adding markers we are running for loop and
         // inside that we are drawing marker on our map.
         for (int i = 0; i < locationArrayList.size(); i++) {
 
+            if (Global.arrayOfChildrenUsers.size() > 0){ //a,b
+                marker = Global.arrayOfChildrenUsers.get(i).getName();
+            }
+            else{// 학생
+                marker = "현재 위치";
+            }
+
             // below line is use to add marker to each location of our array list.
-            mMap.addMarker(new MarkerOptions().position(locationArrayList.get(i)).title("Marker"));
+            mMap.addMarker(new MarkerOptions().position(locationArrayList.get(i)).title(marker));
 
             /*// below lin is use to zoom our camera on map.
             mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
@@ -112,7 +133,7 @@ public class Three_LocationFragment extends Fragment implements OnMapReadyCallba
         //Build camera position
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(position)
-                .zoom(11).build();
+                .zoom(15).build();
         //Zoom in and animate the camera.
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }

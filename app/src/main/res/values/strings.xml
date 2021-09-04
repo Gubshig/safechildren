@@ -6,6 +6,7 @@
     <string name="school">학교</string>
     <string name="academy">학원</string>
     <string name="school_search">학교명을 입력해주세요</string>
+    <string name="academy_search">학원명을 입력해주세요</string>
     <string name="school_search_btn">검색</string>
     <string name="save_user">저장하기</string>
     <string name="mypage">메인</string>

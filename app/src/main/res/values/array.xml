@@ -16,6 +16,47 @@
         <item>univ_list</item>
         <item>seet_list</item>
         <item>alte_list</item>
+    </string-array>
+
+    <string-array name="academy_area">
+        <item>서울특별시교육청</item>
+        <item>부산광역시교육청</item>
+        <item>대구광역시교육청</item>
+        <item>인천광역시교육청</item>
+        <item>광주광역시교육청</item>
+        <item>대전광역시교육청</item>
+        <item>울산광역시교육청</item>
+        <item>세종특별자치시교육청</item>
+        <item>경기도교육청</item>
+        <item>강원도교육청</item>
+        <item>충청북도교육청</item>
+        <item>충청남도교육청</item>
+        <item>전라북도교육청</item>
+        <item>전라남도교육청</item>
+        <item>경상북도교육청</item>
+        <item>경상남도교육청</item>
+        <item>제주특별자치도교육청</item>
+    </string-array>
+
+    <string-array name="academy_code">
+        <item>B10</item>
+        <item>C10</item>
+        <item>D10</item>
+        <item>E10</item>
+        <item>F10</item>
+        <item>G10</item>
+        <item>H10</item>
+        <item>I10</item>
+        <item>J10</item>
+        <item>K10</item>
+        <item>M10</item>
+        <item>N10</item>
+        <item>P10</item>
+        <item>Q10</item>
+        <item>R10</item>
+        <item>S10</item>
+        <item>T10</item>
 
     </string-array>
+
 </resources>

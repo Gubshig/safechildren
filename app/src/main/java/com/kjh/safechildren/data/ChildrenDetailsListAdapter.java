@@ -1,15 +1,23 @@
 package com.kjh.safechildren.data;
 
 import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.kjh.safechildren.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class ChildrenDetailsListAdapter extends BaseAdapter {
     ArrayList<User_Safechildren> usersList;
@@ -71,12 +79,38 @@ public class ChildrenDetailsListAdapter extends BaseAdapter {
         tvEmail.setText("이메일:  "+user.getEmail());
         tvGender.setText("성별:  "+user.getGender());
         tvDoB.setText("생년월일:  "+user.getDateOfBirth());
-        tvLocation.setText("위치:  "+user.getLocation());
+        tvLocation.setText("위치:  "+getAddress(user.getLocation()));
         tvSchools.setText("학교/학원 목록:  "+user.getSchoolsCSV());
         tvStatus.setText("상태: "+user.getStatus());
         tvStatusUpdateTime.setText("마지막업데이트: "+user.getLastStatusUpdate());
         // Return the completed view to render on screen
         return row;
+    }
+
+    private String getAddress(String loc){
+        String locString[] = loc.split(",");
+        String cityName = null;
+        if(locString.length==2){
+            Double lat = Double.parseDouble(locString[0]);
+            Double lon = Double.parseDouble(locString[1]);
+
+            Geocoder gcd = new Geocoder(c, Locale.getDefault());
+            List<Address> addresses;
+            try {
+                addresses = gcd.getFromLocation(lat,
+                        lon, 1);
+
+                if (addresses.size() > 0) {
+                    cityName = addresses.get(0).getAddressLine(0).toString().replace("대한민국","");
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(c,"위치 정보를 불러오지 못했습니다.",Toast.LENGTH_LONG);
+            }
+        }
+
+        return cityName;
     }
 }
 

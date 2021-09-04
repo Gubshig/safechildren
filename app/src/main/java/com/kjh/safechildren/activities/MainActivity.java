@@ -1,34 +1,57 @@
 package com.kjh.safechildren.activities;
 
+import android.app.AlertDialog;
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.nfc.FormatException;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
+import android.nfc.tech.Ndef;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentManager;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.auth.User;
 import com.kjh.safechildren.Global;
 import com.kjh.safechildren.R;
+import com.kjh.safechildren.data.GPS;
+import com.kjh.safechildren.data.User_Firebase;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.util.Arrays;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private NfcAdapter nfcAdapter;
     private PendingIntent pendingIntent;
     private BottomNavigationView navView;
+    private GPS gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        gps = new GPS(this,getApplicationContext());
+
+
         //nfc 사용 불가 시 null return
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+
         Intent intent = new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
@@ -42,14 +65,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //뒤로 가기 시 dialog
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setTitle("종료")
+                .setMessage("앱을 종료합니다.")
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("취소",null)
+                .show();
+    }
+
     @Override
     //앱이 켜져 있을 때만 인식
     protected void onResume() {
         super.onResume();
-        if (nfcAdapter != null) {
+        if (nfcAdapter != null ) {
             nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null);
         }
-
     }
 
     @Override
@@ -58,38 +97,31 @@ public class MainActivity extends AppCompatActivity {
         if (nfcAdapter != null) {
             nfcAdapter.disableForegroundDispatch(this);
         }
-
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-        if (tag != null) {
-            byte[] tagId = tag.getId();
-            Toast.makeText(this,toHexString(tagId),Toast.LENGTH_LONG).show();
-            Log.e("TAG",toHexString(tagId));
-        }
 
-    }
+        if(Global.user.getType().compareTo("child")==0){
+            if (Global.user.getStatus()){//true(승차) 상태에서 nfc tag 인식 시
+                Global.user.setStatus(false); //false(하차)상태로 변환
+                Toast.makeText(getApplicationContext(),"하차하였습니다.",Toast.LENGTH_SHORT).show();
+                gps.removeGPS();
+                User_Firebase.updateUser();
 
-    public static final String CHARS = "0123456789ABCDEF";
 
-    public static String toHexString(byte[] data) {
+            }
+            else{ //false(하차) 상태에서 nfc tag 인식 시
+                Global.user.setStatus(true); //true(승차)상태로 변환
+                Toast.makeText(getApplicationContext(),"승차하였습니다.",Toast.LENGTH_SHORT).show();
+                gps.getLocation(); //GPS 등록
+                User_Firebase.updateUser();
 
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < data.length; ++i) {
-
-            sb.append(CHARS.charAt((data[i] >> 4) & 0x0F))
-
-                    .append(CHARS.charAt(data[i] & 0x0F));
+            }
 
         }
 
-        return sb.toString();
-
     }
-
 
 }
