@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.kjh.safechildren.Global;
 import com.kjh.safechildren.R;
 import com.kjh.safechildren.SafeChildrenCallback;
@@ -147,7 +149,7 @@ public class User_Firebase {
     }
 
 
-    public static void setChildEventListener(Context c){
+   /*public static void setChildEventListener(Context c){
         if (mDatabase == null) {
             FirebaseDatabase.getInstance(serverAddress).setPersistenceEnabled(true);
             mDatabase = FirebaseDatabase.getInstance(serverAddress).getReference();
@@ -160,31 +162,37 @@ public class User_Firebase {
 
             @Override
             public void onChildChanged(@NonNull  DataSnapshot snapshot, @Nullable  String previousChildName) {
-                if(Global.user.getType().compareTo("parent")==0){
-                    for (DataSnapshot childDataSnapshot : snapshot.getChildren()) {
-                        User_Safechildren childData = childDataSnapshot.getValue(User_Safechildren.class);
-                        for (int i = 0; i < Global.arrayOfChildrenUsers.size();i++){
-                            boolean child = childData.email.compareTo(Global.arrayOfChildrenUsers.get(i).getEmail())==0;
-                            boolean status = childData.status.compareTo(Global.arrayOfChildrenUsers.get(i).getStatus())!=0;
-                            if (child && status){
-                                NotificationCompat.Builder builder = new NotificationCompat.Builder(c,"default");
+                String ref = snapshot.getRef().toString();
+                //users 안 데이터가 바뀐 경우에만 탐색 (manager 제외)
+                if (ref.substring(ref.length()-5, ref.length()).equals("users")){
+                    if(Global.user.getType().compareTo("parent")==0){
+                        for (DataSnapshot childDataSnapshot : snapshot.getChildren()) {
+                            User_Safechildren childData = childDataSnapshot.getValue(User_Safechildren.class);
+                            for (int i = 0; i < Global.arrayOfChildrenUsers.size();i++){
+                                boolean child = childData.email.compareTo(Global.arrayOfChildrenUsers.get(i).getEmail())==0;
+                                boolean status = childData.status.compareTo(Global.arrayOfChildrenUsers.get(i).getStatus())!=0;
+                                if (child && status){
+                                    NotificationCompat.Builder builder = new NotificationCompat.Builder(c,"default");
 
-                                builder.setSmallIcon(R.mipmap.ic_launcher);
-                                builder.setContentTitle("알림 제목");
-                                builder.setContentText("알람 세부 텍스트");
-                                // 알림 표시
-                                NotificationManager notificationManager = (NotificationManager)c.getSystemService(Context.NOTIFICATION_SERVICE);
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
+                                    builder.setSmallIcon(R.mipmap.ic_launcher);
+                                    builder.setContentTitle("알림 제목");
+                                    builder.setContentText("알람 세부 텍스트");
+                                    // 알림 표시
+                                    NotificationManager notificationManager = (NotificationManager)c.getSystemService(Context.NOTIFICATION_SERVICE);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                        notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
+                                    }
+                                    // id값은  정의해야하는 각 알림의 고유한 int값
+                                    notificationManager.notify(1, builder.build());
+                                    User_Firebase.getAllChildren(c, true);//child정보 update
                                 }
-                                // id값은  정의해야하는 각 알림의 고유한 int값
-                                notificationManager.notify(1, builder.build());
-                                User_Firebase.getAllChildren(c, true);//child정보 update
                             }
-                        }
 
+                        }
                     }
                 }
+
+
 
             }
 
@@ -204,7 +212,7 @@ public class User_Firebase {
             }
         });
 
-    }
+    }*/
 
     public static void getAllChildren(Context c, boolean bGetParentsChildren){
 
@@ -215,13 +223,12 @@ public class User_Firebase {
         mDatabase.child("users").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
-                long count = dataSnapshot.getChildrenCount();
-                allChildrenList = null;
                 allChildrenList = new ArrayList<User_Safechildren>();
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     User_Safechildren userData = childDataSnapshot.getValue(User_Safechildren.class);
                     if(userData.type.compareTo("child")==0 || userData.type.length()==0){
                         allChildrenList.add(userData);
+
                     }
 
                 }

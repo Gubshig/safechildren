@@ -19,6 +19,9 @@
     <string name="label_google_sign_in">Firebase + Google Sign In</string>
     <string name="desc_google_sign_in">Use a Google Sign In credential to authenticate with Firebase.</string>
 
+    <string name="nfc_success">인증에 성공하였습니다.</string>
+    <string name="nfc_failed">인증에 실패하였습니다. 다시 시도해주십시오.</string>
+
     <string name="label_facebook_login">Firebase + Facebook Login</string>
     <string name="desc_facebook_login">Use a Facebook Login credential to authenticate with Firebase.</string>
 

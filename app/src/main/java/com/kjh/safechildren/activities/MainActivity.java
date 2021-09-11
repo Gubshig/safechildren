@@ -4,47 +4,59 @@ import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.nfc.FormatException;
-import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
-import android.nfc.Tag;
-import android.nfc.tech.Ndef;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentManager;
 
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.firestore.auth.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.kjh.safechildren.Global;
 import com.kjh.safechildren.R;
+import com.kjh.safechildren.API.FCM_PUSH;
 import com.kjh.safechildren.data.GPS;
 import com.kjh.safechildren.data.User_Firebase;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-import java.util.Arrays;
-import java.util.Locale;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private NfcAdapter nfcAdapter;
     private PendingIntent pendingIntent;
     private BottomNavigationView navView;
     private GPS gps;
+    private String TAG = "FirebaseMessaging";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //FCM push 수신을 위한 Token받아오기
+        /*FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                        Log.d(TAG, token);
+
+                    }
+                });*/
+
+
 
         gps = new GPS(this,getApplicationContext());
 
@@ -103,25 +115,79 @@ public class MainActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
-        if(Global.user.getType().compareTo("child")==0){
-            if (Global.user.getStatus()){//true(승차) 상태에서 nfc tag 인식 시
-                Global.user.setStatus(false); //false(하차)상태로 변환
-                Toast.makeText(getApplicationContext(),"하차하였습니다.",Toast.LENGTH_SHORT).show();
-                gps.removeGPS();
-                User_Firebase.updateUser();
+        //child or manager이면
+        if (Global.user.getType().equals("manager") | Global.user.getType().equals("child") ){
 
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+            DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-            }
-            else{ //false(하차) 상태에서 nfc tag 인식 시
-                Global.user.setStatus(true); //true(승차)상태로 변환
-                Toast.makeText(getApplicationContext(),"승차하였습니다.",Toast.LENGTH_SHORT).show();
-                gps.getLocation(); //GPS 등록
-                User_Firebase.updateUser();
+            //manager root에 user type 넣기
+            databaseReference.child("manager").push().setValue(Global.user.getType());
 
-            }
+            nfc_check(databaseReference);
+            nfc_delete(databaseReference);
 
         }
+    }
+
+    public void nfc_check(DatabaseReference databaseReference){
+        //manger root data 읽어오기
+        databaseReference.child("manager").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+            @Override
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getChildrenCount() == 2){ // manager root에 데이터가 두개이면 child, manager
+                    ArrayList<String> types = new ArrayList<>();
+                    for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                        String type = (String) childDataSnapshot.getValue();
+                        types.add(type);
+                    }
+                    if (types.contains("manager") && types.contains("child")){ //인증 성공
+                        Toast.makeText(getApplicationContext(),R.string.nfc_success,Toast.LENGTH_SHORT).show();
+                        String state_text = "";
+                        if(Global.user.getType().compareTo("child")==0){ // 학생 계정 인증 성공 시
+                            if (Global.user.getStatus()){//true(승차) 상태에서 nfc tag 인식 시
+                                Global.user.setStatus(false); //false(하차)상태로 변환
+                                Toast.makeText(getApplicationContext(),"하차하였습니다.",Toast.LENGTH_SHORT).show();
+                                state_text += "하차";
+                                gps.removeGPS();
+                                User_Firebase.updateUser();
+                            }
+                            else{ //false(하차) 상태에서 nfc tag 인식 시
+                                Global.user.setStatus(true); //true(승차)상태로 변환
+                                Toast.makeText(getApplicationContext(),"승차하였습니다.",Toast.LENGTH_SHORT).show();
+                                state_text += "승차";
+                                gps.getLocation(); //GPS 등록
+                                User_Firebase.updateUser();
+
+                            }
+
+                            // 숭, 하차 상태 변경 후 fcm push
+                            try {
+                                new FCM_PUSH(getString(R.string.AUTH_KEY_FCM),Global.user.getUid(),Global.user.getName(),state_text).execute();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+
+                    }
+
+
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),R.string.nfc_failed,Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
 
     }
+
+    public void nfc_delete(DatabaseReference databaseReference){
+        databaseReference.child("manager").removeValue();
+    }
+
+
 
 }

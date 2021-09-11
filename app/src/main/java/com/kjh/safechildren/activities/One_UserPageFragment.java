@@ -1,15 +1,8 @@
 package com.kjh.safechildren.activities;
 
-import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,32 +22,27 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.kjh.safechildren.Global;
 import com.kjh.safechildren.R;
 import com.kjh.safechildren.SafeChildrenCallback;
-import com.kjh.safechildren.data.Academy_API;
+import com.kjh.safechildren.API.Academy_API;
 import com.kjh.safechildren.data.SchoolListAdapter;
-import com.kjh.safechildren.data.School_API;
+import com.kjh.safechildren.API.School_API;
 import com.kjh.safechildren.data.User_Firebase;
 import com.kjh.safechildren.data.User_Safechildren;
 import com.kjh.safechildren.data.UsersListAdapter;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 public class One_UserPageFragment extends Fragment implements SafeChildrenCallback, View.OnClickListener {
     ListView childlist;
@@ -130,12 +118,6 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
                 User_Firebase.writeUserData();
             }
         });
-
-        //부모 계정일 때 child firebase 데이터 변경 시 알림
-        if (Global.user.getType().compareTo("parent") == 0){
-            User_Firebase.setChildEventListener(getContext());
-        }
-
 
 
         parentCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -421,6 +403,21 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
                 //check if already exist, skip if it does
                 if(Global.user.getChildrenCSV().contains(child.getEmail())==false){
                     Global.user.setChildrenCSV(Global.user.getChildrenCSV().concat(prefix+child.getEmail()));
+                    //child uid을 주제로 구독 (parent)
+                    FirebaseMessaging.getInstance().subscribeToTopic(child.getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            String msg = child.getUid();
+                            if(!task.isSuccessful()){
+                                msg += "ERROR";
+                            }
+                            Log.e("FCM", msg);
+
+                        }
+                    });
+
+
+
                 }
 
                 User_Firebase.updateUser();

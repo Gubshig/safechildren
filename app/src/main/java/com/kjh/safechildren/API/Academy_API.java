@@ -1,14 +1,11 @@
-package com.kjh.safechildren.data;
+package com.kjh.safechildren.API;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-
-import com.kjh.safechildren.R;
+import com.kjh.safechildren.data.SchoolListAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,23 +16,21 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.Buffer;
-import java.util.ArrayList;
 
-public class School_API extends AsyncTask<String, Void, String> {
+public class Academy_API extends AsyncTask<String, Void, String> {
     private String key;
-    private String type;
-    private String school_name;
+    private String code;
+    private String academy_name;
     private StringBuffer stringbuffer = new StringBuffer();
     private String result;
     private SchoolListAdapter adapter;
     private Context c;
     private String TAG = "Json Parsing Error";
 
-    public School_API(String key, String type, String school_name,SchoolListAdapter adapter,Context c){
+    public Academy_API(String key, String code, String academy_name,SchoolListAdapter adapter, Context c){
         this.key = key;
-        this.type = type;
-        this.school_name = school_name;
+        this.code = code;
+        this.academy_name = academy_name;
         this.adapter = adapter;
         this.c = c;
     }
@@ -44,9 +39,9 @@ public class School_API extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
         URL url = null;
         try{
-            url = new URL("http://www.career.go.kr/cnet/openapi/getOpenApi?apiKey="+key
-                    +"&svcType=api&svcCode=SCHOOL&contentType=json&gubun="+type
-                    + "&searchSchulNm="+school_name);
+            url = new URL("https://open.neis.go.kr/hub/acaInsTiInfo?Key="+key
+                    +"&Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE="+code
+                    + "&ACA_NM="+academy_name);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             if (connection != null){
                 connection.setConnectTimeout(10000);
@@ -77,22 +72,22 @@ public class School_API extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result){
         super.onPostExecute(result);
         try{
-            JSONObject object = new JSONObject(result).getJSONObject("dataSearch");
-            JSONArray array = object.getJSONArray("content");
-            for (int i = 0; i < array.length(); i++) {
+            JSONArray array =  new JSONObject(result).getJSONArray("acaInsTiInfo");
+            for (int i = 1; i < array.length(); i++) {
                 JSONObject temp = array.getJSONObject(i);
-                String name = temp.getString("schoolName");
-                String addr = temp.getString("adres");
-                adapter.addItem(name,addr);
+                JSONArray temp_arr = temp.getJSONArray("row");
+                for (int j = 0 ; j <temp_arr.length();j++){
+                    JSONObject row = temp_arr.getJSONObject(j);
+                    String name = row.getString("ACA_NM");
+                    String addr = row.getString("FA_RDNMA");
+                    adapter.addItem(name,addr);
+                }
 
             }
-
             adapter.notifyDataSetChanged();
 
-
-
         }catch (Exception e){
-            Toast.makeText(c,"오류가 발생했습니다.",Toast.LENGTH_LONG).show();
+            Toast.makeText(c,"검색된 결과가 없습니다.",Toast.LENGTH_LONG).show();
             Log.e(TAG,e.getMessage());
         }
 
