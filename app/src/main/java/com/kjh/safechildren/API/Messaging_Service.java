@@ -32,11 +32,11 @@ public class Messaging_Service extends FirebaseMessagingService {
         String title = remoteMessage.getData().get("title");
         String message = remoteMessage.getData().get("message");
 
-        final String CHANNEL_ID = "ChannerID";
+        final String CHANNEL_ID = "ChannelID";
         NotificationManager mManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            final String CHANNEL_NAME = "ChannerName";
-            final String CHANNEL_DESCRIPTION = "ChannerDescription";
+            final String CHANNEL_NAME = "ChannelName";
+            final String CHANNEL_DESCRIPTION = "ChannelDescription";
             final int importance = NotificationManager.IMPORTANCE_HIGH;
 
             // add in API level 26
