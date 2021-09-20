@@ -27,10 +27,10 @@
         <ImageView
             android:id="@+id/icon"
             style="@style/ThemeOverlay.FirebaseIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:contentDescription="@string/desc_firebase_lockup"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/bus" />
 
         <TextView
             android:id="@+id/pleaselogintext"

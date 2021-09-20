@@ -415,9 +415,6 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
 
                         }
                     });
-
-
-
                 }
 
                 User_Firebase.updateUser();
@@ -440,7 +437,7 @@ public class One_UserPageFragment extends Fragment implements SafeChildrenCallba
         //arrayOfChildrenUsers = User_Firebase.allChildrenList;
         childrenListAdapter = new UsersListAdapter(getContext(), Global.arrayOfChildrenUsers);
         childlist.setAdapter(childrenListAdapter);
-        childlist.postInvalidate();
+        childlist.postInvalidate();//view update
         childlist.invalidate();
         if(Global.arrayOfChildrenUsers.size()>0)
             emptylisttext.setVisibility(View.INVISIBLE);

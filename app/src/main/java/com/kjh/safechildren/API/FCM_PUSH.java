@@ -51,6 +51,7 @@ public class FCM_PUSH extends AsyncTask {
                 "key1": "value1",
                 "key2": "value2"
               },
+
               "to" : "userToken..." or topics
             }
 
@@ -92,8 +93,6 @@ public class FCM_PUSH extends AsyncTask {
         dataJson.addProperty("type", title);
         dataJson.addProperty("message", "자녀가 "+state_text+"하였습니다.");
 
-
-
         json.add("data", dataJson);
 
         try{
@@ -111,7 +110,6 @@ public class FCM_PUSH extends AsyncTask {
             throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
         }else{
             br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-
             String output;
             System.out.println("Output from Server .... \n");
             while ((output = br.readLine()) != null) {
