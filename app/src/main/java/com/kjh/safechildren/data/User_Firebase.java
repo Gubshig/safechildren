@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -100,7 +101,9 @@ public class User_Firebase {
                 //Global.user.setEmail(firebaseUserData.getEmail());
                 //User_Firebase.getAllTutorsAndLessons(c, firebaseUserData, bLogin);
 
-                fm.beginTransaction().replace(R.id.container, new One_UserPageFragment()).commit();
+                if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                    fm.beginTransaction().replace(R.id.container, new One_UserPageFragment()).commit();
+                }
 
             }
         });

@@ -81,7 +81,12 @@ public class ChildrenDetailsListAdapter extends BaseAdapter {
         tvDoB.setText("생년월일:  "+user.getDateOfBirth());
         tvLocation.setText("위치:  "+getAddress(user.getLocation()));
         tvSchools.setText("학교/학원 목록:  "+user.getSchoolsCSV());
-        tvStatus.setText("상태: "+user.getStatus());
+        if(user.getStatus()){
+            tvStatus.setText("상태: 승차");
+        }
+        else {
+            tvStatus.setText("상태: 하차");
+        }
         tvStatusUpdateTime.setText("마지막업데이트: "+user.getLastStatusUpdate());
         // Return the completed view to render on screen
         return row;

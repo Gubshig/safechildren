@@ -26,6 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.kjh.safechildren.activities.MainActivity">
+            android:screenOrientation="portrait"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"
                     android:windowSoftInputMode="adjustNothing"/>

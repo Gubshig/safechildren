@@ -130,6 +130,7 @@ public class LoginAndRegisterFragment extends Fragment {
 
         }else{
             boolean bLogin = currentUser.isEmailVerified();
+            Log.e("!!!!!", String.valueOf(currentUser.isEmailVerified()));
             updateUI(currentUser, bLogin);
         }
 
