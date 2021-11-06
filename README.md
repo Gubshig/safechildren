@@ -4,6 +4,9 @@
 
 (동영상의 링크) 영상에 대한 간단한 설명
 
+<iframe width="956" height="538" src="https://youtube.com/embed/mmNCXZOUrw0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 핵심기능 : 
 
 승차하 정보 확인) nfc 태그를 활용하여 버스 내에 있는 nfc 리더기에 태그를 대면 학부모에게 알림이 간다.
