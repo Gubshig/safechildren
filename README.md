@@ -19,18 +19,22 @@
 
 테스트용 학부모 계정을 이용해서 위에서 명시한 핵심 기능들을 체험해볼 수 있다.
 1. 메인 화면이 시작되면 알려준 계정을 사용해서 로그인(회원가입도 가능)
+ <img src="https://user-images.githubusercontent.com/40236418/140608944-482b7621-d4f2-43f3-a443-0de241e076ef.jpg" width="200" height="400"/>
+ 
 2. 로그인 후 메인 탭에서 자녀 관리
+<img src="https://user-images.githubusercontent.com/40236418/140608940-82fb67d2-82ca-4cd6-a00a-2e94c938163e.jpg" width="200" height="400"/>
+
 3. 자녀정보 탭에서 자녀 정보 확인
+<img src="https://user-images.githubusercontent.com/40236418/140608941-b13cb6fb-8648-4a05-8938-f0055fa79930.jpg" width="200" height="400"/>
+
 4. 위치/현황 탭에서 자녀 위치 실시간 확인
+<img src="https://user-images.githubusercontent.com/40236418/140608942-6e7e4034-4a94-4620-8ec5-7fa980b470a6.jpg" width="200" height="400"/>
 
 계정생성 시
+
 1. 이메일 인증 후 서비스를 사용 가능하다
+<img src="https://user-images.githubusercontent.com/40236418/140609123-36fc79f5-5062-4888-8398-327094c0789a.jpg" width="200" height="400"/>
+
 2. 이메일 인증 후 본인의 정보 입력이 가능하고 자녀 등록 밑 위에서 설명한 기능 사용 가능
-<img src="이미지주소.png" width="200" height="400"/>
-<img src="이미지주소.png" width="200" height="400"/>
-<img src="이미지주소.png" width="200" height="400"/>
-<img src="이미지주소.png" width="200" height="400"/>
-![KakaoTalk_20211104_190411720](https://user-images.githubusercontent.com/40236418/140608940-82fb67d2-82ca-4cd6-a00a-2e94c938163e.jpg)
-![KakaoTalk_20211104_190411883](https://user-images.githubusercontent.com/40236418/140608941-b13cb6fb-8648-4a05-8938-f0055fa79930.jpg)
-![KakaoTalk_20211104_190412107](https://user-images.githubusercontent.com/40236418/140608942-6e7e4034-4a94-4620-8ec5-7fa980b470a6.jpg)
-![KakaoTalk_20211104_190411556](https://user-images.githubusercontent.com/40236418/140608944-482b7621-d4f2-43f3-a443-0de241e076ef.jpg)
+
+
