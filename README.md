@@ -6,7 +6,7 @@
 
 핵심기능 : 
 
-승차하 정보 확인) n
+승차하 정보 확인) nfc 태그를 활용하여 버스 내에 있는 nfc 리더기에 태그를 대면 학부모에게 알림이 간다.
 학부모가 일일이 어플리케이션을 확인하지 않아도 알림이 가기 때문에 편의성이 좋다.
 
 자녀 정보 조회 기능) firebase의 실시간 데이터베이스를 통해서 여러 자녀의 정보를 한눈에 알아볼 수 있다. 
@@ -26,9 +26,11 @@
 계정생성 시
 1. 이메일 인증 후 서비스를 사용 가능하다
 2. 이메일 인증 후 본인의 정보 입력이 가능하고 자녀 등록 밑 위에서 설명한 기능 사용 가능
-
-사진추가
-
-주의사항
-
-요구사항
+<img src="이미지주소.png" width="200" height="400"/>
+<img src="이미지주소.png" width="200" height="400"/>
+<img src="이미지주소.png" width="200" height="400"/>
+<img src="이미지주소.png" width="200" height="400"/>
+![KakaoTalk_20211104_190411720](https://user-images.githubusercontent.com/40236418/140608940-82fb67d2-82ca-4cd6-a00a-2e94c938163e.jpg)
+![KakaoTalk_20211104_190411883](https://user-images.githubusercontent.com/40236418/140608941-b13cb6fb-8648-4a05-8938-f0055fa79930.jpg)
+![KakaoTalk_20211104_190412107](https://user-images.githubusercontent.com/40236418/140608942-6e7e4034-4a94-4620-8ec5-7fa980b470a6.jpg)
+![KakaoTalk_20211104_190411556](https://user-images.githubusercontent.com/40236418/140608944-482b7621-d4f2-43f3-a443-0de241e076ef.jpg)
