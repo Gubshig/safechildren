@@ -4,7 +4,7 @@
 
 (동영상의 링크) 영상에 대한 간단한 설명
 
-https://video-to-markdown.netlify.app/
+[![Safe Children](https://res.cloudinary.com/marcomontalbano/image/upload/v1636257948/video_to_markdown/images/youtube--mmNCXZOUrw0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=mmNCXZOUrw0 "Safe Children")
 
 
 핵심기능 : 
