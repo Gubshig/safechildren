@@ -4,7 +4,7 @@
 
 (동영상의 링크) 영상에 대한 간단한 설명
 
-{% include _include.html id="https://youtube.com/embed/mmNCXZOUrw0" %}  
+{% include youtubevid.html id="mmNCXZOUrw0" %}  
 
 
 핵심기능 : 
