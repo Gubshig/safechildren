@@ -4,7 +4,9 @@
 
 (동영상의 링크) 영상에 대한 간단한 설명
 
-{% include youtubevid.html id="mmNCXZOUrw0" %}  
+{% include youtubevid.html id="mmNCXZOUrw0" provider = "youtube" %}  
+
+<iframe width="928" height="522" src="https://www.youtube.com/embed/mmNCXZOUrw0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 핵심기능 : 
