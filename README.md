@@ -1,10 +1,9 @@
 # Safe Children
 
-### 개요: Safe Children은 자녀의 승하차 여부와 실시간 위치 정보를 제공하므로써 안전한 통학에 대한 학부모에 대한 불안을 줄여주는 어플리케이션이다.
-
-(동영상의 링크) 영상에 대한 간단한 설명
+### 개요: Safe Children은 자녀의 승하차 여부와 실시간 위치 정보를 제공하므로써 안전한 통학에 대한 학부모에 대한 불안을 줄여주는 어플리케이션이다
 
 [![Safe Children](https://res.cloudinary.com/marcomontalbano/image/upload/v1636257948/video_to_markdown/images/youtube--mmNCXZOUrw0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=mmNCXZOUrw0 "Safe Children")
+
 간단한 구동 영상
 
 
