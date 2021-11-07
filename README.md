@@ -4,7 +4,7 @@
 
 (동영상의 링크) 영상에 대한 간단한 설명
 
-<iframe width="956" height="538" src="https://youtube.com/embed/mmNCXZOUrw0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% include _include.html id="https://youtube.com/embed/mmNCXZOUrw0" %}  
 
 
 핵심기능 : 
