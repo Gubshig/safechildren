@@ -2,6 +2,39 @@
 
 ### 개요: Safe Children은 자녀의 승하차 여부와 실시간 위치 정보를 제공하므로써 안전한 통학에 대한 학부모에 대한 불안을 줄여주는 어플리케이션이다
 
+시나리오
+parent, student 공통
+
+계정 만들기 : email, password 기입 후 메일 전송, 전송된 이메일 내 링크를 클릭하여 이메일 인증 완료
+
+로그인 : 이메일 인증된 아이디, 패스워드로 로그인
+
+
+1. user type : Parent
+
+기본 정보 입력 : 이름, 성별, 생년월일, 학부모 checkbox 선택 시 자녀 목록 생성
+
+자녀 추가 : 자녀의 이메일로 자녀 추가 가능 ( 이메일만 알면 해당 자녀 승하차시 위치 정보를 얻어올 수
+있다는 점에서 개인정보 이슈가 있음. )
+
+ +) 이미 등록된 자녀 or 해당 이메일이 firebase database에 없을 시 등록 불가
+
+자녀 정보 확인 : 자녀 이름, 이메일, 성별, 생년월일, 마지막으로 등록된 위치, 승하차 상태, 학교 / 학원,
+마지막 위치 업데이트 시각 정보 확인 가능
+
+위치 / 현황 : db에 저장된 위치에 따라 마커 확인 가능, 마커 클릭 시 해당 자녀의 이름 표시
+
+2. user type : Student
+
+기본 정보 입력 : 이름, 성별, 생년월일, 학교 / 학원 검색 후 해당 정보 등록 가능
+
+승하차 시 nfc 태그 :
+하차 상태에서  태그 -> 승차 상태로 변경 후 자신을 자녀로 추가한 유저에게 notification 발송
+승차 상태에서 정해진 시각 or 일정 거리 이상 이동할 때마다 위치 정보를 업데이트, 학부모가 확인 가능
+
+승차 상태에서 태그 -> 하차 상태로 변경 후 gps 해제, 자신을 자녀로 추가한 유저에게 notification 발송
+
+
 [![Safe Children](https://res.cloudinary.com/marcomontalbano/image/upload/v1636257948/video_to_markdown/images/youtube--mmNCXZOUrw0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=mmNCXZOUrw0 "Safe Children")
 
 간단한 구동 영상
