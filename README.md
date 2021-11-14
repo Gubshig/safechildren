@@ -34,8 +34,14 @@ parent, student 공통
 
 승차 상태에서 태그 -> 하차 상태로 변경 후 gps 해제, 자신을 자녀로 추가한 유저에게 notification 발송
 
-
+학부모 계정 구동영상
 [![Safe Children](https://res.cloudinary.com/marcomontalbano/image/upload/v1636257948/video_to_markdown/images/youtube--mmNCXZOUrw0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=mmNCXZOUrw0 "Safe Children")
+
+학생 게정 구동영상
+[![Safe Children student account](https://res.cloudinary.com/marcomontalbano/image/upload/v1636860258/video_to_markdown/images/youtube--VnavDQ_veJg-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/VnavDQ_veJg "Safe Children student account")
+
+학생계정 nfc 태그
+[![Safe Children student NFC tag ](https://res.cloudinary.com/marcomontalbano/image/upload/v1636860319/video_to_markdown/images/youtube--zGYGTAdUOUA-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/zGYGTAdUOUA "Safe Children student NFC tag ")
 
 간단한 구동 영상
 
