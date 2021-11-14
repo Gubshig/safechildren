@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class UsersListAdapter extends BaseAdapter {
     ArrayList<User_Safechildren> usersList;
     Context c;
+
     public UsersListAdapter(Context context, ArrayList<User_Safechildren> usersList) {
         this.c = context;
         this.usersList = usersList;

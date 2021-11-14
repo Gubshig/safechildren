@@ -12,6 +12,7 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //FCM push 수신을 위한 Token받아오기
         /*FirebaseMessaging.getInstance().getToken()

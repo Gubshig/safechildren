@@ -43,8 +43,7 @@ public class Navigation implements BottomNavigationView.OnItemSelectedListener{
                         fm.beginTransaction().show(fm.findFragmentByTag("login")).commit();
                     }
                     else {
-                        fm.beginTransaction().add(R.id.container, new LoginAndRegisterFragment(),"login").commit();
-                    }
+                        fm.beginTransaction().add(R.id.container, new LoginAndRegisterFragment(),"login").commit(); }
 
                     if  (fm.findFragmentByTag("user") != null)  fm.beginTransaction().hide(fm.findFragmentByTag("user")).commit();
                     if  (fm.findFragmentByTag("status") != null)  fm.beginTransaction().hide(fm.findFragmentByTag("status")).commit();
@@ -84,9 +83,6 @@ public class Navigation implements BottomNavigationView.OnItemSelectedListener{
         }
         return false;
 
-
     }
 
-
 }
-

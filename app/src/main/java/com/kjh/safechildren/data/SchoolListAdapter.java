@@ -50,6 +50,7 @@ public class SchoolListAdapter extends BaseAdapter {
         return school_addr.get(position);
     }
 
+
     @Override
     public long getItemId(int position) {
         // TODO Auto-generated method stub
