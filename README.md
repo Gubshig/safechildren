@@ -37,10 +37,10 @@ parent, student 공통
 학부모 계정 구동영상
 [![Safe Children](https://res.cloudinary.com/marcomontalbano/image/upload/v1636257948/video_to_markdown/images/youtube--mmNCXZOUrw0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=mmNCXZOUrw0 "Safe Children")
 
-학생 게정 구동영상
+학생 계정 구동영상
 [![Safe Children student account](https://res.cloudinary.com/marcomontalbano/image/upload/v1636860258/video_to_markdown/images/youtube--VnavDQ_veJg-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/VnavDQ_veJg "Safe Children student account")
 
-학생계정 nfc 태그
+학생 계정 nfc 태그
 [![Safe Children student NFC tag ](https://res.cloudinary.com/marcomontalbano/image/upload/v1636860319/video_to_markdown/images/youtube--zGYGTAdUOUA-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/zGYGTAdUOUA "Safe Children student NFC tag ")
 
 간단한 구동 영상
@@ -55,7 +55,7 @@ parent, student 공통
 한 자녀 가정만 고려한것이 아닌 다 자녀 가정도 고려한 방식이다.
 
 자녀 위치 추적 기능) 구글 맵을 통해서 실시간으로 자녀의 위치를 알 수 있고 좌표정보도 볼 수 있다.
-이를 통해 학부모의 걱정을 덜어줄 수 있고 직관적인 정보를 제공할 수 있다.
+이를 통해 자녀의 안전에 대한 걱정을 덜어줄 수 있고 직관적인 정보를 제공할 수 있다.
  
 실행방법 :
 
