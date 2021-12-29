@@ -1,0 +1,98 @@
+[
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_loginandregister_layout.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\loginandregister_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_locationactivity_layout.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\locationactivity_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_school_list.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\school_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_child_details.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\child_details.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_statusactivity_layout.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\statusactivity_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\generated\\res\\pngs\\release\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_school_dialog.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\school_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_childrenlistitem.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\childrenlistitem.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\drawable_ic_round_grade_24.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\drawable\\ic_round_grade_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\drawable_ic_round_face_24.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\drawable\\ic_round_face_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_start_layout.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\start_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\menu_menu.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\menu\\menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\drawable_ic_baseline_location_on_24.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\drawable\\ic_baseline_location_on_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\drawable_bus.png.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\drawable\\bus.png"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_signout_verify_reload.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\signout_verify_reload.xml"
+    },
+    {
+        "merged": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\build\\intermediates\\res\\merged\\release\\layout_userpage_layout.xml.flat",
+        "source": "C:\\Users\\junho\\Desktop\\(new) safechildren\\app\\src\\main\\res\\layout\\userpage_layout.xml"
+    }
+]

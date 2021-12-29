@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/junho/Desktop/(new) safechildren/app/src/main/res/layout/activity_main.xml" value="0.21965579710144928" />
+        <entry key="..\:/Users/junho/Desktop/(new) safechildren/app/src/main/res/layout/child_details.xml" value="0.21965579710144928" />
+        <entry key="..\:/Users/junho/Desktop/(new) safechildren/app/src/main/res/layout/childrenlistitem.xml" value="0.21965579710144928" />
+        <entry key="..\:/Users/junho/Desktop/(new) safechildren/app/src/main/res/layout/locationactivity_layout.xml" value="0.21965579710144928" />
+        <entry key="..\:/Users/junho/Desktop/(new) safechildren/app/src/main/res/layout/loginandregister_layout.xml" value="0.21965579710144928" />
+        <entry key="..\:/Users/junho/Desktop/(new) safechildren/app/src/main/res/layout/statusactivity_layout.xml" value="0.21965579710144928" />
+        <entry key="..\:/Users/junho/Desktop/(new) safechildren/app/src/main/res/layout/userpage_layout.xml" value="0.21965579710144928" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26296296296296295" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/drawable/ic__29.xml" value="0.1925925925925926" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/drawable/ic__7.xml" value="0.3219298245614035" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/drawable/ic_round_grade_24.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/child_details.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/childrenlistitem.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/locationactivity_layout.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/loginandregister.xml" value="0.33" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/loginandregister_layout.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/school_dialog.xml" value="0.30833333333333335" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/start_layout.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/statusactivity_layout.xml" value="0.30833333333333335" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/test.xml" value="0.30833333333333335" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/(new) safechildren/app/src/main/res/layout/test2.xml" value="0.30833333333333335" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/ingoout/app/src/main/res/drawable/ic_background.xml" value="0.24868421052631579" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/ingoout/app/src/main/res/drawable/ic_ingoout_logo.xml" value="0.24868421052631579" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/ingoout/app/src/main/res/layout/loginandregister.xml" value="0.23508771929824562" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/ingoout/app/src/main/res/layout/loginandregister_layout.xml" value="0.23508771929824562" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/ingoout/app/src/main/res/layout/sunrin_ingoout_login (1).xml" value="0.25" />
+        <entry key="..\:/Users/junho/Desktop/ingoout test/ingoout/app/src/main/res/layout/sunrin_ingoout_login.xml" value="0.30833333333333335" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

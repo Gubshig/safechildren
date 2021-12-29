@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.kjh.safechildren"
+        applicationId "com.example.sunrin_app"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

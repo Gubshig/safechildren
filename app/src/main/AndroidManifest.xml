@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kjh.safechildren">
+    package="com.example.sunrin_app">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -10,7 +10,7 @@
 
 
     <application
-        android:name="com.kjh.safechildren.Global"
+        android:name="com.example.sunrin_app.Global"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,14 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Safechildren"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.kjh.safechildren.activities.StartActivity">
+        <activity android:name="com.example.sunrin_app.activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"
                     android:windowSoftInputMode="adjustNothing"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.kjh.safechildren.activities.MainActivity">
+        <activity android:name="com.example.sunrin_app.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"
                     android:windowSoftInputMode="adjustNothing"/>
@@ -40,7 +40,7 @@
 
         <!-- FCM 설정 추가 -->
         <service
-            android:name="com.kjh.safechildren.API.Messaging_Service"
+            android:name="com.example.sunrin_app.API.Messaging_Service"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "118269458730",
+    "firebase_url": "https://ingoout-de41a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ingoout-de41a",
+    "storage_bucket": "ingoout-de41a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118269458730:android:f52657213da3a727914653",
+        "android_client_info": {
+          "package_name": "com.example.sunrin_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118269458730-6rqpl4fffbgp2u8h9tnlurk8a0jrcmq8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7BAmvaSFWSvYmEqPii65JUFnbtwO31e0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118269458730-6rqpl4fffbgp2u8h9tnlurk8a0jrcmq8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
